@@ -74,6 +74,6 @@ app.use(blogcommentRoutes);
 app.use(conversationRoutes);
 
 
-app.listen(8080, process.env.IP, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("server started.......");
 })
