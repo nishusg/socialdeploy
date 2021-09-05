@@ -1,0 +1,29 @@
+<%- include("./partials/header") %>
+    <div class="ui text container">
+        <h3 class="ui center aligned header">Friends</h3>
+        <hr>
+        <% if(friend.length == 0){%>
+            <div class="card">
+                <div class="content" style="text-align: center;">
+                    <h4 class="ui center aligned header">Make some friends</h4>
+                </div>
+                <br>
+                <div class="content" style="text-align: center;">
+                    <a href="/finduser" class="ui basic blue button">Search friend</a>
+                </div>
+            </div>
+        <%}else{%>
+            <% friend.forEach(function(user){ %>
+                <div class="ui segment" id="friendlist">
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">
+                                <a href="/user/<%= user.friendid%>"><h2><%= user.friend %></h2></a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% });%>  
+        <%}%> 
+    </div>
+<%- include("./partials/footer") %>

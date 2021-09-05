@@ -1,0 +1,15 @@
+<%- include("./partials/header") %>
+<form action="/post/<%= post._id %>?_method=PUT" method="post" class="ui form">
+    <div class="ui container">
+        <div class="field">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title"  class="validate" value="<%= post.title %>" >
+        </div>
+        <div class="field">
+            <label for="description">Tell more about post</label>
+            <input type="text" id="description" name="description"  class="validate" value="<%= post.description %>">
+        </div>
+        <button class="ui basic fluid orange button">Update Post</button>
+    </div>
+</form>
+<%- include("./partials/footer") %>

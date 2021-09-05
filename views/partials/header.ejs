@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colleague</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Pacifico&display=swap" rel="stylesheet">
+    <!--Import semantic ui.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- my css -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="ui right vertical menu sidebar">
+    <% if(!currentUser){ %>
+      <a  class=" item" href="/login"><i class="sign-in alternate icon"></i>Login</a>
+      <a  class="  item" href="/register"><i class="plus square  icon"></i>Create Account</a>
+    <% }else{ %>
+      <a  class=" item"  href="/message">Messages<i class="paper plane icon"></i></a>
+      <a  class=" item"  href="/allblog">All Blogs<i class="blogger b icon"></i></a>
+      <a  class=" item"  href="/finduser">Find User<i class="users icon"></i></a>
+      <a  class=" item"  href="/request">My Request<i class="user plus icon"></i></a>
+      <a  class=" item"  href="/mypost">My Post<i class="images icon"></i></a>
+      <a  class=" item"  href="/myblog">My Blog<i class="bold icon"></i></a>
+      <a  class=" item"  href="/friend">My Friend<i class="user icon"></i></a>
+      <a  class=" item"  href="/profile"><%= currentUser.username %><i class=" user circle icon"></i></span></a>
+      <a  class=" item"  href="/logout">Logout<i class="sign-out alternate icon"></i></a>
+    <% } %>
+  </div>
+  <div class="pusher">
+    <div class="ui basic fixed  menu" id="nav">
+      <div class="header item">
+        <a href="/home" id="tag">
+          Colleague
+        </a>
+      </div>
+      <div class="right menu">
+        <a class="ui item"><i class="align justify icon"></i></a>
+      </div>
+    </div>
+    <div id="top">
+      <div class="ui container" style="text-align: center;">
+        <% if(error && error.length>0){ %>
+          <div class="ui red message">
+            <div class="header">
+              <%= error %>    
+            </div>
+          </div>
+        <% } %>
+        <% if(success && success.length>0){ %>
+          <div class="ui green message">
+            <div class="header">
+              <%= success %>    
+            </div>
+          </div>
+        <% } %>
+      </div>
+  <br>

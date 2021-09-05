@@ -1,0 +1,23 @@
+<%- include("./partials/header") %>
+<div class="ui text container" id="signup">
+    <form action="/register" method="POST" class="ui form">
+        <div class="ui container">
+            <div class="field">
+                <label for="Username">Username</label>
+                <input type="text" id="Username" placeholder="Username" name="username"  class="validate">
+            </div>
+            <div class="field">
+                <label for="Password">Password</label>
+                <input type="password" id="Password" placeholder="Password" name="password"  class="validate">
+            </div>
+             <div class="field">
+                <label for="Email">E-mail</label>
+                <input type="email" id="Email" name="email" placeholder="E-mail" class="validate">
+            </div>
+            <br>
+            <button class="ui basic fluid green button">Create Account</button>
+        </div>
+    </form>
+</div>
+
+<%- include("./partials/footer") %>

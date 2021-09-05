@@ -1,0 +1,21 @@
+<%- include("./partials/header") %>
+<div class="ui text container">
+    <form action="/post" method="POST" class="ui form" enctype="multipart/form-data">
+        <div class="ui container">
+            <div class="field">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title"  class="validate" >
+            </div>
+            <div class="field">
+                <label for="image">Image Upload</label>
+                <input type="file" id="image" name="image"  class="validate" >
+            </div>
+            <div class="field">
+                <label for="description">Tell more about post</label>
+                <input type="text" id="description" name="description"  class="validate">
+            </div>
+            <button class="ui basic fluid green button">New Post</button>
+        </div>
+    </form>
+</div>
+<%- include("./partials/footer") %>

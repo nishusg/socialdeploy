@@ -1,0 +1,116 @@
+<%- include("./partials/header") %>
+<div class="ui container">
+    <div class="ui text container">
+        <div class="ui segment">
+            <div class="doubling stackable two column ui grid container">
+                <div class="eight wide  column">
+                    <% if(user.image.length == 36 || user.image.length == 0){%>
+                        <img class="ui centered medium image" src="/image/<%= user.image %>" id="ppic">
+                    <%}else{%>
+                        <img class="ui centered medium image" src="https://semantic-ui.com/images/wireframe/image.png" id="ppic">
+                    <%}%>
+                </div>
+                <div class="eight wide  column">
+                    <div class="item">
+                        <div class="ui equal width grid">
+                            <div class="column">
+                                <h2><%= user.username %></h2> 
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="item">
+                        <div class="ui equal width grid">
+                            <div class="column">
+                                <div class="ui compact menu" id="btn">
+                                    <a class="item" href="/<%=user._id%>/friend">
+                                      Friends 
+                                      <div class="floating ui teal label"><%= user.friends.length%></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui compact menu" id="btn">
+                                    <a class="item" href="/<%=user._id%>/post">
+                                      Posts 
+                                      <div class="floating ui grey label"><%= user.posts.length%></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui compact menu" id="btn">
+                                    <a class="item" href="/<%=user._id%>/blog">
+                                      Blogs 
+                                      <div class="floating ui black label"><%= user.blogs.length%></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% if(!user.name && !user.bio && !user.website ){%>
+            <div class="ui hidden message">
+                Nothing here
+            </div>   
+        <%}else{%>
+            <div class="ui floating small message">
+                <div class="content">
+                    <div class="header">
+                        <% if(user.name){%>
+                            Hi I'm <%= user.name%>
+                        <%}%>
+                    </div>
+                    <% if(user.bio){%>
+                        <p><%= user.bio%></p>
+                    <%}%>
+                    <% if(user.website){%>
+                        <p><%= user.website%></p>
+                    <%}%>
+                </div>
+            </div>
+        <%}%>
+        <div class="ui equal width grid">
+            <% if(status == 1){ %>
+                <div class="column">
+                    <form action="/user/<%=user.id%>/accept" method="post">
+                        <button id="friend" class="ui basic fluid blue button">Accept</button>
+                    </form>
+                </div>
+                <div class="column">
+                    <form action="/user/<%=user.id%>/decline" method="post">
+                        <button id="friend" class="ui basic fluid red button">Decline</button>
+                    </form>
+                </div>
+            <% } else if (status == 2){%>
+                <div class="column">
+                    <form action="/user/<%=user.id%>/cancle" method="post">
+                        <button id="friend" class="ui basic fluid red button">Cancle Request</button>
+                    </form>
+                </div>
+            <% } else if (status == 3){%>
+                <div class="column">
+                    <form action="/user/<%=user.id%>/removefriend" method="post">
+                        <button id="friend" class="ui basic fluid red button">Remove friend</button>
+                    </form>
+                </div>
+                
+            <% }else{%>
+                <div class="column">
+                    <form action="/user/<%=user._id%>" method="post">
+                        <button id="friend" class="ui basic fluid blue button">Add friend</button>
+                    </form>
+                </div>
+            <% } %>
+            <div class="column">
+                <form action="/message/<%=user._id%>" method="GET">
+                    <button id="friend" class="ui basic fluid green button">Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<%- include("./partials/footer") %>

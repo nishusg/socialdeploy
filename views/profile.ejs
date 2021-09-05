@@ -1,0 +1,82 @@
+<%- include("./partials/header") %>
+<div class="ui container">
+    <div class="ui text container">
+        <div class="ui segment">
+            <div class="doubling stackable two column ui grid container">
+                <div class="eight wide  column">
+                    <% if(user.image.length == 36 || user.image.length == 0){%>
+                        <img class="ui centered medium image" src="/image/<%= user.image %>" id="ppic">
+                    <%}else{%>
+                        <img class="ui centered medium image" src="https://semantic-ui.com/images/wireframe/image.png" id="ppic">
+                    <%}%>
+                </div>
+                <div class="eight wide  column">
+                    <div class="item">
+                        <div class="ui equal width grid">
+                            <div class="column">
+                                <h2><%= user.username %></h2> 
+                            </div>
+                            <div class="column">
+                                <a href="/editprofile" class="ui tag blue label" id="edit">Edit </a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="item">
+                        <div class="ui equal width grid">
+                            <div class="column">
+                                <div class="ui compact menu" id="btn">
+                                    <a class="item" href="/friend">
+                                        Friends 
+                                      <div class="floating ui teal label"><%= user.friends.length%></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="column" >
+                                <div class="ui compact menu" id="btn">
+                                    <a class="item" href="/mypost">
+                                      Posts 
+                                      <div class="floating ui grey label"><%= user.posts.length%></div>
+                                    </a>
+                                  </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui compact menu" id="btn">
+                                    <a class="item" href="/myblog">
+                                      Blogs 
+                                      <div class="floating ui black label"><%= user.blogs.length%></div>
+                                    </a>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% if(!user.name && !user.bio && !user.website ){%>
+            <div class="ui hidden message">
+                Nothing here
+            </div>   
+        <%}else{%>
+            <div class="ui floating small message">
+                <div class="content">
+                    <div class="header">
+                        <% if(user.name){%>
+                            <%= user.name%>
+                        <%}%>
+                    </div>
+                    <% if(user.bio){%>
+                        <hr>
+                        <p><%= user.bio%></p>
+                    <%}%>
+                    <% if(user.website){%>
+                        <p><%= user.website%></p>
+                    <%}%>
+                </div>
+            </div>
+        <%}%>
+    </div>
+    <br>
+</div>
+<%- include("./partials/footer") %>

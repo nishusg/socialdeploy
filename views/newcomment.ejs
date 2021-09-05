@@ -1,0 +1,12 @@
+
+<%- include("./partials/header") %>
+<form action="/post/<%= post._id%>/comments" method="post" class="ui form">
+    <div class="ui container">
+        <div class="field">
+            <label for="text">Comment text</label>
+            <input type="text" id="text" name="comment[text]"  class="validate" >
+        </div>
+        <button class="ui basic fluid green button">New Comment</button>
+    </div>
+</form>
+<%- include("./partials/footer") %>

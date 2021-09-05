@@ -1,0 +1,27 @@
+<%- include("./partials/header") %>
+<div class="ui text container">
+    <form action="/finduser" method="post" class="ui form">
+        <input type="text" id="username" name="username" placeholder="Enter Username">
+        <br><br>
+        <button class="ui basic teal fluid button">Search</button>
+    </form>
+    <h3 style="text-align: center;">Find User</h3>
+    <div class="ui middle  aligned animated list">
+        <% user.forEach(function(user){ %>
+            <div class="item">
+                <% if(user.image.length == 36 || user.image.length == 0){%>
+                    <img class="ui avatar image" src="/image/<%= user.image %>">
+                <%}else{%>
+                    <img class="ui avatar image" src="https://semantic-ui.com/images/wireframe/image.png">
+                <%}%>
+                <div class="content">
+                    <div class="header">
+                        <a href="/user/<%= user._id%>"><h2><%= user.username %></h2></a> 
+                    </div>
+                </div>
+            </div>
+            <hr>
+        <% });%>
+    </div>
+</div>
+<%- include("./partials/footer") %>

@@ -1,0 +1,37 @@
+<%- include("./partials/header") %>
+<div class="ui text container">
+    <div class="ui middle  aligned animated list">
+        <% if(user==null){%>
+            <div class="ui segment">
+                <div class="item">
+                    <h3>Start chat</h3>
+                </div>
+            </div>
+        <%}else{%>
+            <% user.forEach(function(user){ %>
+                <% if(loginuser==user.sender){%>
+                    <div class="ui segment" id="findmsg">
+                        <div class="item">
+                            <div class="content">
+                                <div class="header">
+                                    <a href="/message/<%=user.recieverid%>"><h2><%= user.reciever %></h2></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}else{%>
+                    <div class="ui segment" id="findmsg">
+                        <div class="item">
+                            <div class="content">
+                                <div class="header">
+                                    <a href="/message/<%=user.senderid%>"><h2><%= user.sender %></h2></a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+            <% });%>
+        <%}%> 
+    </div>
+</div>
+<%- include("./partials/footer") %>

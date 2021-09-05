@@ -1,0 +1,32 @@
+<%- include("./partials/header") %>
+<div class="ui text container">
+    <h3 class="ui center aligned header"><%= name %>'s Blogs</h3>
+    <hr>
+    <br>
+    <% if(blog.length == 0){%>
+        <div class="card">
+            <div class="content" style="text-align: center;">
+                <h4 class="ui center aligned header">No Blog Upload by <%= name %></h4>
+            </div>
+        </div>
+    <%}else{%>
+        <% blog.forEach(function(blog){ %>
+            <div class="ui floating message">
+              <a href="/user/<%=blog.user.id%>" style="font-weight: bold;"><%=blog.user.username%></a>
+              <hr>
+              <div class="content" style="text-transform: capitalize;">
+                <a href="/blog/<%= blog._id%>" >  
+                  <%= blog.text %> 
+                </a>
+                <div class="meta">
+                  <br>
+                  <i class="comment outline icon"></i>
+                  <%= blog.comments.length%>
+                  <br>
+                </div>
+              </div>
+            </div>
+          <% });%>
+    <%}%>
+</div>
+<%- include("./partials/footer") %>

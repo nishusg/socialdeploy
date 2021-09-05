@@ -1,0 +1,25 @@
+<%- include("./partials/header") %>
+<div class="ui text container">
+    <h3 style="text-align: center;">All Request Here</h3>
+    <hr>
+    <% if(request.length == 0){%>
+        <div class="card">
+            <div class="content" style="text-align: center;">
+                <h4 class="ui center aligned header">No new request</h4>
+            </div>
+        </div>
+    <%}else{%>
+        <% request.forEach(function(user){ %>
+            <div class="ui segment" id="request">
+                <div class="item">
+                    <div class="content">
+                        <div class="header">
+                            <a href="/user/<%= user.sender.id %>" ><h2><%= user.susername %></h2></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% });%>
+    <%}%>
+</div>
+<%- include("./partials/footer") %>

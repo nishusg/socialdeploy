@@ -1,0 +1,36 @@
+<%- include("./partials/header") %>
+<div class="ui container">
+    <div class="ui text container">
+        <a  class=" ui basic fluid teal button " href="/post">Upload Post</a>
+    </div>
+    <hr>
+    <br>
+    <% if(post.length == 0){%>
+        <div class="card">
+            <div class="content" style="text-align: center;">
+                <h4 class="ui center aligned header">No post uploaded yet</h4>
+            </div>
+        </div>
+    <%}else{%>
+        <div class="ui three stackable cards">
+            <% post.forEach(function(post){ %>
+                <div class="card" id="cardfindpost">
+                    <div class="image">
+                        <img src="/image/<%=post.image%>" id="imageshow">
+                    </div>
+                    <div class="content">
+                        <a href="/post/<%= post._id%>" class="header">
+                            <%= post.title%>
+                        </a>
+                        <br>
+                        <div class="meta">
+                            <i class="comment outline icon"></i>
+                            <%= post.comments.length%>
+                        </div>
+                    </div>
+                </div>
+            <% });%>
+        </div>
+    <%}%>   
+</div>
+<%- include("./partials/footer") %>

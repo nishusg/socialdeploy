@@ -1,0 +1,23 @@
+<%- include("./partials/header") %>
+<div class="ui text container" id="login">
+    <form action="/login" method="POST" class="ui form" id="login">
+        <div class="ui container">
+            <div class="field">
+                <label for="Username">Username</label>
+                <input type="text" id="Username" placeholder="Username" name="username"  class="validate">
+            </div>
+            <div class="field">
+                <label for="Password">Password</label>
+                <input type="password" id="Password" placeholder="Password" name="password"  class="validate">
+            </div>
+            <br>
+            <button class="ui basic fluid blue button">Login</button>
+            <div class="ui horizontal divider" >
+                Or
+            </div>
+            <br>
+            <a href="/register" class="ui basic fluid green button">Create Account</a>
+        </div>
+    </form>
+</div>
+<%- include("./partials/footer") %>

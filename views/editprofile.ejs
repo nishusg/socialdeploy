@@ -1,0 +1,24 @@
+<%- include("./partials/header") %>
+<form action="/editprofile" method="POST" class="ui form" enctype="multipart/form-data">
+    <div class="ui container">
+        <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name"  class="validate" value="<%= user.name %>">
+        </div>
+        <div class="field">
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image"  class="validate" value="<%= user.image %>">
+        </div>
+        <div class="field">
+            <label for="bio">Bio</label>
+            <input type="text" id="bio" name="bio"  class="validate" value="<%= user.bio %>">
+        </div>
+        <div class="field">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website"  class="validate" value="<%= user.website %>">
+        </div>
+        <button class="ui basic fluid orange button">Update Profile</button>
+    </div>
+</form>
+
+<%- include("./partials/footer") %>

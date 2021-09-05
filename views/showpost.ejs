@@ -1,0 +1,80 @@
+<%- include("./partials/header") %>
+<div class="ui container">
+  <div class="doubling stackable two column ui grid container">
+    <div class="ten wide  column">
+      <div class="ui segment">
+        <a href="/user/<%=post.user.id%>" style="font-weight: bold; font-size: large;"><%=post.user.username%></a>
+        <hr>
+        <div class="item">
+          <div class="content">
+            <div class="header">
+               <span class="card-title"><%= post.title%></span>   
+            </div>
+          </div>
+        </div>
+        <img src="/image/<%=post.image%>" class="ui fluid image" id="spost">
+      </div> 
+      <div class="ui middle aligned divided list">
+        <div class="item">
+            <div class="content">
+                <div class="header">
+                  <p><%= post.description%> </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="content">
+                <div class="header">
+                  - <%= post.created.toTimeString()%>
+                </div>
+            </div>
+        </div>
+        <% if(currentUser && post.user.id.equals(currentUser._id)){ %>
+          <a href="/post/<%= post._id%>/edit" class="ui basic fluid teal button">Edit</a>
+          <hr>
+          <form action="/post/<%= post._id %>?_method=DELETE" method="POST" >
+            <button class="ui basic fluid red button">Delete</button>
+          </form>
+        <% } %>
+      </div>
+    </div>
+    <div class=" six wide column">
+        <div class="ui segment">
+          <div class="ui comments">
+            <h4>Comment <span><%= post.comments.length%></span></h4>
+            <% post.comments.forEach(function(comment){ %>
+              <div class="comment">
+                <div class="content">
+                  <a class="author" href="/user/<%=comment.author.id%>"><%= comment.author.username%></a>
+                  <div class="metadata">
+                    <div class="date"><%= comment.created.toDateString()%></div>
+                  </div>
+                  <div class="text">
+                    <%= comment.text%> 
+                  </div>
+                </div>
+              </div>
+              <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                <a class="ui basic fluid teal button" href="/post/<%=post._id%>/comments/<%= comment._id %>/edit">Edit</a>
+                <hr>
+                <form  action="/post/<%=post._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                  <button class="ui basic fluid red button">Delete</button>
+                </form>
+              <% } %>
+            <% });%>
+            <hr>
+            <form action="/post/<%= post._id%>/comments" method="post" class="ui form">
+              <div class="ui container">
+                  <div class="field">
+                      <input type="text" id="text" name="comment[text]"  class="validate" placeholder="Add Comment">
+                  </div>
+                  <button class="ui basic fluid green button">Comment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+<div>
+
+<%- include("./partials/footer") %>
